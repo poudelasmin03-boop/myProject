@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wishlist Card</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.wishlist-card {
+  width: 250px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.wishlist-card:hover {
+  transform: translateY(-5px);
+}
+
+.wishlist-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 15px;
+  text-align: center;
+}
+
+.card-content h3 {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.price {
+  color: #2ecc71;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.card-actions button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-view {
+  background: #3498db;
+  color: #fff;
+}
+
+.btn-remove {
+  background: #e74c3c;
+  color: #fff;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="wishlist-card">
+    <img src="https://via.placeholder.com/250" alt="Product Image">
+
+    <div class="card-content">
+      <h3>Product Name</h3>
+      <p class="price">Rs. 2,500</p>
+
+      <div class="card-actions">
+        <button class="btn-view">View</button>
+        <button class="btn-remove">Remove</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
