@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="page">
+    <div class="card">
+        <h2>Load / Deposit Balance</h2>
+
+        <form method="POST" action="{% url 'deposite' %}">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="account">Account Number</label>
+                <input type="text" id="account" name="account_nbr" placeholder="Enter your account number"
+                       value="{{ account_nbr|default:'' }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="number" id="amount" name="amount" placeholder="Enter amount to load"
+                       value="{{ amount|default:'' }}" required min="100">
+            </div>
+
+            <button type="submit" class="depostie-btn">Load Balance</button>
+            <a  href="{% url 'statements' %}" class="depostie-btn">Statement</a>
+
+            {% if error %}
+              <p class="error">{{ error }}</p>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}

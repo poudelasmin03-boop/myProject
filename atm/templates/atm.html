@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/atm.css' %}">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- For icons -->
+  <title>ATM</title>
+</head>
+<body>
+    <div class="atm">
+        <div class="secure-badge"><i class="fas fa-lock"></i> Secure</div>
+        <div class="screen">
+            <!-- Welcome Screen -->
+            <div id="welcome" class="screen-content">
+                <div class="logo">SecureBank</div>
+                <h2>Welcome</h2>
+                <p>Select Language</p>
+                <div class="language-select">
+                    <button class="lang-btn active" onclick="setLanguage('en')">English</button>
+                    <button class="lang-btn" onclick="setLanguage('es')">Español</button>
+                    <button class="lang-btn" onclick="setLanguage('fr')">Français</button>
+                </div>
+                <p>Insert your card to begin</p>
+                <button class="action-btn" onclick="insertCard()" aria-label="Insert card"><i class="fas fa-credit-card"></i> Insert Card</button>
+            </div>
+            <!-- PIN Screen -->
+            <div id="pin" class="screen-content hidden">
+                <h2>Enter PIN</h2>
+                <div class="pin-display" id="pin-display" aria-live="polite"></div>
+                <div class="keypad">
+                    <button class="key" onclick="addPin('1')">1</button>
+                    <button class="key" onclick="addPin('2')">2</button>
+                    <button class="key" onclick="addPin('3')">3</button>
+                    <button class="key" onclick="addPin('4')">4</button>
+                    <button class="key" onclick="addPin('5')">5</button>
+                    <button class="key" onclick="addPin('6')">6</button>
+                    <button class="key" onclick="addPin('7')">7</button>
+                    <button class="key" onclick="addPin('8')">8</button>
+                    <button class="key" onclick="addPin('9')">9</button>
+                    <button class="key" onclick="clearPin()">Clear</button>
+                    <button class="key" onclick="addPin('0')">0</button>
+                    <button class="key" onclick="submitPin()">Enter</button>
+                </div>
+                <div class="actions">
+                    <button class="action-btn cancel-btn" onclick="cancel()">Cancel</button>
+                </div>
+            </div>
+            <!-- Main Menu -->
+            <div id="menu" class="screen-content hidden">
+                <h2>Main Menu</h2>
+                <div class="menu">
+                    <button class="menu-btn" onclick="selectTransaction('withdraw')"><i class="fas fa-money-bill-wave"></i> Withdraw</button>
+                    <button class="menu-btn" onclick="selectTransaction('balance')"><i class="fas fa-balance-scale"></i> Balance</button>
+                    <button class="menu-btn" onclick="selectTransaction('deposit')"><i class="fas fa-plus-circle"></i> Deposit</button>
+                    <button class="menu-btn" onclick="selectTransaction('transfer')"><i class="fas fa-exchange-alt"></i> Transfer</button>
+                    <button class="menu-btn" onclick="selectTransaction('change-pin')"><i class="fas fa-key"></i> Change PIN</button>
+                    <button class="menu-btn" onclick="exit()"><i class="fas fa-sign-out-alt"></i> Exit</button>
+                </div>
+            </div>
+            <!-- Withdraw Screen -->
+            <div id="withdraw" class="screen-content hidden">
+                <h2>Withdraw Cash</h2>
+                <p>Select Amount</p>
+                <div class="menu">
+                    <button class="menu-btn" onclick="withdraw(20)">$20</button>
+                    <button class="menu-btn" onclick="withdraw(50)">$50</button>
+                    <button class="menu-btn" onclick="withdraw(100)">$100</button>
+                    <button class="menu-btn" onclick="withdraw(200)">$200</button>
+                </div>
+                <div class="actions">
+                    <button class="action-btn cancel-btn" onclick="backToMenu()">Back</button>
+                </div>
+            </div>
+            <!-- Balance Screen -->
+            <div id="balance" class="screen-content hidden">
+                <h2>Account Balance</h2>
+                <p class="success">Available: $1,250.00</p>
+                <p>Pending: $0.00</p>
+                <div class="actions">
+                    <button class="action-btn" onclick="backToMenu()">Back</button>
+                    <button class="action-btn" onclick="printReceipt()">Print Receipt</button>
+                </div>
+            </div>
+            <!-- Deposit Screen -->
+            <div id="deposit" class="screen-content hidden">
+                <h2>Deposit Funds</h2>
+                <p>Insert cash or check</p>
+                <button class="action-btn" onclick="completeDeposit(50)">Deposit $50</button>
+                <div class="actions">
+                    <button class="action-btn cancel-btn" onclick="backToMenu()">Back</button>
+                </div>
+            </div>
+            <!-- Transfer Screen -->
+            <div id="transfer" class="screen-content hidden">
+                <h2>Transfer Money</h2>
+                <p>Enter recipient account and amount</p>
+                <button class="action-btn" onclick="completeTransfer(100)">Transfer $100</button>
+                <div class="actions">
+                    <button class="action-btn cancel-btn" onclick="backToMenu()">Back</button>
+                </div>
+            </div>
+            <!-- Receipt Screen -->
+            <div id="receipt" class="screen-content hidden">
+                <h2>Transaction Complete</h2>
+                <div class="receipt" id="receipt-content">
+                    <p><strong>SecureBank Receipt</strong></p>
+                    <p id="receipt-text"></p>
+                    <p>Thank you for banking with us!</p>
+                </div>
+                <div class="actions">
+                    <button class="action-btn" onclick="reset()">Take Receipt & Exit</button>
+                </div>
+            </div>
+            <!-- Loading/Error Overlays -->
+            <div id="loading" class="screen-content hidden loading">
+                <p>Processing...</p>
+            </div>
+        </div>
+    </div>
+  
+
+ <script src="{% static 'js/atm.js' %}"></script>   
+</body>
+</html>

@@ -1,0 +1,99 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+     <link rel="stylesheet" href="{% static 'css/open.css' %}">
+    <link rel="stylesheet" href="{% static 'css/deposite.css' %}">
+    <link rel="stylesheet" href="{% static 'css/transfer.css' %}"> 
+
+
+
+</head>
+<body>
+
+   {% if success %}
+    <div class="alert">
+                <span>{{success}}</span>
+                
+            </div>
+     {% endif %}       
+      {% if loadsuccess %}
+    <div class="alert">
+                <span>{{loadsuccess}}</span>
+                
+            </div>
+     {% endif %}       
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Satoru Bank</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}" class="{% if request.page == 'home' %}active{% endif %}">Home</a></li>
+        <li><a href="{% url 'open' %}"  class="active">Open Account</a></li>
+        <li><a href="{% url 'transfer' %}"  class="{% if page == 'transfer' %}active{% endif %}">Transfer Balance</a></li>
+        <li><a href="{% url 'statements' %}"  class="{% if page == 'statements' %}active{% endif %}">statements</a></li>
+
+        <li><a href="#atmCard">ATM Card</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+   {% block content %}
+       
+   {% endblock %}
+
+    <!-- Footer -->
+   <footer class="footer">
+  <div class="footer-container">
+
+    <!-- About / Brand -->
+    <div class="footer-section about">
+      <h3>Satoru Bank </h3>
+      <p>Secure, modern, and easy banking at your fingertips. Trusted by thousands of customers worldwide.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'open' %}">Open Account</a></li>
+        <li><a href="{% url 'transfer' %}">Transfer Balance</a></li>
+        <li><a href="#atmCard">ATM Card</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact / Support -->
+    <div class="footer-section contact">
+      <h4>Support</h4>
+      <p>Email: <a href="mailto:support@mybank.com">gojoSatoru@mybank.com</a></p>
+      <p>Phone: <a href="tel:+1234567890">98888888</a></p>
+      <p><a href="#">FAQ</a></p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section social">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook">📘</a>
+        <a href="#" aria-label="Twitter">🐦</a>
+        <a href="#" aria-label="Instagram">📸</a>
+        <a href="#" aria-label="LinkedIn">💼</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 Satoru Bank. All rights reserved.</p>
+    <div>
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

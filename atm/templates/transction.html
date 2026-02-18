@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Transaction Statement</title>
+  <link rel="stylesheet" href="{% static 'css/transction.css' %}">
+</head>
+<body>
+
+<div class="container">
+  <h2>Transaction Statement</h2>
+
+  <div class="account-info">
+    <p><strong>Account Holder:</strong> John Doe</p>
+    <p><strong>Account No:</strong> 1234567890</p>
+    <p><strong>Current Balance:</strong> $12,450.00</p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Account Number</th>
+        <th>Amount</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+    {% if users %}
+
+    {% for user in users%}
+      <tr>
+        <td><{{ user.date }}/td>
+        <td>{{ user.account_nbr }}</td>
+        <td>{{ user.amount }}</td>
+      </tr>
+
+    {% endfor %}
+    {% else %}
+    <tr>
+      <td colspan="3" style="color: Green;">No Transaction History</td>
+    </tr>
+    {% endif %}
+    
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

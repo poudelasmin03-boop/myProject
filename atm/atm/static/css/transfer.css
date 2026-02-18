@@ -1,0 +1,104 @@
+/* ===== Page Wrapper ===== */
+.tform-section {
+    max-width: 600px;
+    margin: 70px auto;
+    background: #ffffff;
+    padding: 35px 30px;
+    border-radius: 14px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Heading ===== */
+.tform-section h2 {
+    text-align: center;
+    margin-bottom: 28px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #020617;
+}
+
+/* ===== Two Column Row (Sender & Recipient) ===== */
+.tform-row {
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr;
+    gap: 60px;
+    margin-bottom: 18px;
+}
+
+/* ===== Form Group ===== */
+.tform-group {
+    width: 50%;
+    margin-bottom: 18px;
+}
+
+.tform-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #334155;
+}
+
+.tform-group input {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    outline: none;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tform-group input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+/* ===== Button Section ===== */
+.btn-section {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.transfer-btn {
+    flex: 1;
+    background: #0ea5e9;
+    color: #ffffff;
+    border: none;
+    padding: 12px 0;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.transfer-btn:hover {
+    background: #0284c7;
+    transform: translateY(-2px);
+}
+
+.transfer-btn:active {
+    transform: translateY(0);
+}
+
+/* ===== Error Message ===== */
+.tform-section p {
+    margin-top: 18px;
+    font-size: 14px;
+    text-align: center;
+    color: #dc2626;
+    font-weight: 500;
+}
+
+/* ===== Responsive (Mobile) ===== */
+@media (max-width: 600px) {
+    .tform-row {
+        grid-template-columns: 1fr; /* stack sender & recipient */
+    }
+
+    .btn-section {
+        flex-direction: column;
+    }
+}

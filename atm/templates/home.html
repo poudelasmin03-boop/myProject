@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>Open your account and manage your finances with ease</h1>
+        <p>Secure, modern, and easy banking at your fingertips.</p>
+        <div class="hero-buttons">
+            <a href="{% url 'open' %}" class="btn">Open Account</a>
+            <a href="{% url 'transfer' %}" class="btn">Transfer Balance</a>
+            <a href="{% url 'deposite' %}" class="btn">Deposit Amount</a>
+            <a href="{% url 'check' %}" class="btn">Check Balance</a>
+            <a href="atm-card.html" class="btn">Get ATM Card</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="{% static 'images/sato.jpg' %}" alt="Bank">
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-container">
+    <div class="form-card">
+        <h2 class="form-title">Open Bank Account</h2>
+        <form class="open-account-form" method="POST" action="{% url 'open' %}">
+            <!-- Row 1 -->
+             {% csrf_token %}
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" style="text-transform: uppercase;" placeholder="First Name" name="firstname" value="{{ firstname|default:'' }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Middle Name (Optional)</label>
+                <input type="text"style="text-transform: uppercase;" placeholder="Middle Name" name="middlename" value="{{ middlename|default:'' }}" >
+            </div>
+
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text"style="text-transform: uppercase;" placeholder="Last Name" name="lastname" value="{{ lastname|default:'' }}" required>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="form-group">
+                <label>Age</label>
+                <input type="number" placeholder="Age"name="age" value="{{ age|default:'' }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="text" placeholder="10 digit phone number" maxlength="10" name="phone" value="{{ phone|default:'' }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="Email Address" name="email" value="{{ email|default:'' }}" required>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="form-group">
+                <label>City</label>
+                <input type="text" placeholder="City"name="city" value="{{ city|default:'' }}" >
+            </div>
+
+            <div class="form-group">
+                <label>Province</label>
+                <input type="text" placeholder="Province"name="province" value="{{ province|default:'' }}" >
+            </div>
+
+            <div class="form-group">
+                <label>Postal Code</label>
+                <input type="text" placeholder="Postal Code"name="postal" value="{{ postal|default:'' }}" >
+            </div>
+
+            <!-- Address -->
+            <div class="form-group full-width">
+                <label>Full Address</label>
+                <textarea rows="2" placeholder="Enter full address" name="address">{{ address|default:'' }}</textarea>
+            </div>
+             
+            <div class="form-group">
+               <p style="color: red;">{{error}}</p>
+            </div>
+
+            <!-- Submit -->
+            <button class="submit-btn" type="submit">
+                Create Account
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

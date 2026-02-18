@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* ===== Page Wrapper ===== */
+.tform-section {
+    max-width: 600px;
+    margin: 70px auto;
+    background: #ffffff;
+    padding: 35px 30px;
+    border-radius: 14px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Heading ===== */
+.tform-section h2 {
+    text-align: center;
+    margin-bottom: 28px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #020617;
+}
+
+/* ===== Two Column Row (Sender & Recipient) ===== */
+.tform-row {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    gap: 45px;
+    margin-bottom: 18px;
+}
+
+/* ===== Form Group ===== */
+.tform-group {
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.tform-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #334155;
+}
+
+.tform-group input {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    outline: none;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tform-group input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+/* ===== Button Section ===== */
+.btn-section {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.transfer-btn {
+    flex: 1;
+    background: #0ea5e9;
+    color: #ffffff;
+    border: none;
+    padding: 12px 0;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.transfer-btn:hover {
+    background: #0284c7;
+    transform: translateY(-2px);
+}
+
+.transfer-btn:active {
+    transform: translateY(0);
+}
+
+/* ===== Error Message ===== */
+.tform-section p {
+    margin-top: 18px;
+    font-size: 14px;
+    text-align: center;
+    color: #dc2626;
+    font-weight: 500;
+}
+
+/* ===== Responsive (Mobile) ===== */
+@media (max-width: 600px) {
+    .tform-row {
+        grid-template-columns: 1fr; /* stack sender & recipient */
+    }
+
+    .btn-section {
+        flex-direction: column;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <section class="tform-section">
+    <h2>Transfer Balance</h2>
+
+    <form id="transferForm" method="POST" action="{% url 'transfer' %}">
+        {% csrf_token %}
+
+        <!-- Sender & Recipient SAME ROW -->
+        <div class="tform-row">
+            <div class="tform-group">
+                <label>Sender Account Number*</label>
+                <input type="text" name="sender" value="{{ sender|default:'' }}" required>
+            </div>
+
+            <div class="tform-group">
+                <label>Recipient Account Number*</label>
+                <input type="text" name="receiver" value="{{ receiver|default:'' }}" required>
+            </div>
+        </div>
+
+        <!-- Amount FULL ROW -->
+        <div class="tform-group">
+            <label>Amount*</label>
+            <input type="number" name="amount" min="100" max="1000000"
+                   value="{{ amount|default:'' }}" required>
+        </div>
+
+        <!-- Buttons SAME ROW -->
+        <div class="btn-section">
+            <button type="submit" class="transfer-btn">Transfer</button>
+            <button type="submit" class="transfer-btn">Statement</button>
+        </div>
+
+        {% if error %}
+            <p style="color:red;">{{ error }}</p>
+        {% endif %}
+    </form>
+</section>
+
+</body>
+</html>

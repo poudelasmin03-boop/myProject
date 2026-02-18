@@ -1,0 +1,120 @@
+/* ================= PAGE CONTAINER ================= */
+.page-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* ================= FORM CARD ================= */
+.form-card {
+    background: #fff;
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* FORM TITLE */
+.form-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1f2933;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* ================= FORM GROUPS ================= */
+.open-account-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* space between fields */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 30%; /* 3 per row approx */
+    min-width: 200px;
+}
+
+/* FULL WIDTH GROUP (textarea or special fields) */
+.form-group.full-width {
+    flex: 1 1 100%;
+}
+
+/* LABELS */
+.form-group label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #1f2933;
+    font-size: 14px;
+}
+
+/* INPUTS & TEXTAREA */
+.form-group input,
+.form-group textarea {
+    padding: 8px 12px; /* minimal height */
+    font-size: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    min-height: 36px; /* minimized height */
+    resize: vertical;
+}
+
+/* Uppercase fields */
+.form-group input[style*="text-transform: uppercase;"] {
+    text-transform: uppercase;
+}
+
+/* INPUT / TEXTAREA FOCUS */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 2px rgba(14,165,233,0.2);
+}
+
+/* ERROR TEXT */
+.form-group p {
+    font-size: 13px;
+    color: red;
+    margin-top: 2px;
+}
+
+/* SUBMIT BUTTON */
+.submit-btn {
+    padding: 10px 25px;
+    background: #0ea5e9;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #0284c7;
+    transform: translateY(-2px);
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Medium screens */
+@media (max-width: 992px) {
+    .form-group {
+        flex: 1 1 45%; /* two per row */
+    }
+}
+
+/* Small screens / mobile */
+@media (max-width: 600px) {
+    .form-group {
+        flex: 1 1 100%; /* stack fields */
+    }
+    .submit-btn {
+        width: 100%;
+    }
+}
